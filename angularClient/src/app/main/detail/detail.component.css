@@ -1,0 +1,49 @@
+.ctdprd {
+  width: 100vw !important;
+  max-width: 1152px;
+  margin: 1.31em auto;
+  box-sizing: border-box;
+  min-height: 90vh;
+  text-align: left;
+}
+.ctdprd section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.card div.price {
+  padding: 0.1em 1em;
+}
+.card-action {
+  display: table;
+  vertical-align: bottom;
+}
+
+.card-action button {
+  display: inline-block;
+  background-color: rgb(11, 93, 160);
+  color: #fff;
+  border-radius: 3px;
+  border-color: #333;
+  padding: 0.75em 0.75em;
+  font-weight: bolder;
+  font-size: 0.8em;
+  margin: 0.25em;
+}
+.card-action button.add {
+  background-color: rgb(240, 218, 98);
+  color: #333;
+  margin-left: 3.2em;
+}
+.card-action form {
+  display: inline;
+}
+.card-action form input {
+  padding: 0.5em 0.5em;
+  border: 1px solid #999;
+  border-radius: 3px;
+  background-color: #fff;
+  display: inline;
+  box-sizing: border-box;
+  font-size: 0.95em;
+}

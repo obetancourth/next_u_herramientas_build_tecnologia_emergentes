@@ -33,7 +33,7 @@
 .card-action button.add {
   background-color: rgb(240, 218, 98);
   color: #333;
-  margin-left: 3.2em;
+  margin-left: 3em;
 }
 .card-action form {
   display: inline;
@@ -46,4 +46,9 @@
   display: inline;
   box-sizing: border-box;
   font-size: 0.95em;
+}
+header{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 }

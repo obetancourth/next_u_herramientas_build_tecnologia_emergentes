@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+import PrivateRoute from './src/common/PrivateRoute';
+import Main from './src/main/Main';
+import DetailItem from './src/details/DetailItem';
+import Checkout from './src/checkout/Checkout';
+
+import Login from './src/login/login';
+
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      isAuthenticated : true
+    }
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div>
+          <Route path="/login" component={Login} />
+          <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/" exact component={Main} />
+          <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/detail" exact component={DetailItem} />
+          <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/checkout" exact component={Checkout} />
+        </div>
+      </Router>
     );
   }
 }

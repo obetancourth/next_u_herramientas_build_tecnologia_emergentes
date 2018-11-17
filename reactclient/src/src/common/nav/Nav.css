@@ -1,0 +1,39 @@
+nav {
+  position: relative;
+  box-sizing: border-box;
+  width: 100vw;
+  background-color: #FFF;
+  color: #333;
+  padding: 1em 2em;
+  text-align: left;
+  max-width: 1152px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-shadow: 1px 1px 3px #000;
+}
+nav h1 {
+  font-size: 1.25rem;
+  padding: 0px;
+  margin: 0px;
+  top: 0em;
+  display: inline;
+}
+nav ul {
+  position: absolute;
+  right: 1em;
+  top: 0.5em;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  display: inline;
+}
+nav ul li {
+  display: inline;
+}
+nav ul li a {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+}

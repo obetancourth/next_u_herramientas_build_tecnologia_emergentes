@@ -1,0 +1,44 @@
+  .container.login {
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    background-image: url('../assets/imgs/login-fondo.jpg');
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container.login form {
+    padding: 3rem;
+    color: #FFF !important;
+    min-width: 380px;
+  }
+  .container.login fieldset {
+    border: none;
+    text-align: left;
+    width: 100%;
+  }
+  .container.login label, .container.login form input {
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1em;
+    color: #fff !important;
+  }
+  .container.login form input {
+    padding: 0.5em 1em;
+    border: 1px solid #999;
+    border-radius: 3px;
+    background-color: #fff;
+  }
+  .container.login form button {
+    display: inline-block;
+    background-color: rgb(65, 182, 65);
+    color: #fff;
+    border-radius: 3px;
+    border-color: #333;
+    padding: 1em 1.5em;
+    font-weight: bolder;
+    font-size: 1em;
+    margin: 1em auto;
+  }

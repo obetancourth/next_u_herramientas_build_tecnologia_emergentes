@@ -13,15 +13,39 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      isAuthenticated : true
+      isAuthenticated : window.localStorage.getItem('logged') === "true"
+    }
+    this.setAuthenticated = this.setAuthenticated.bind(this);
+  }
+  setAuthenticated(isAuthenticated){
+    if (isAuthenticated){
+      window.localStorage.setItem('logged','true');
+      this.setState({...this.state, isAuthenticated:true});
+    } else {
+      window.localStorage.removeItem('logged');
+      this.setState({ ...this.state, isAuthenticated: false });
     }
   }
   render() {
     return (
       <Router>
         <div>
-          <Route path="/login" component={Login} />
-          <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/" exact component={Main} />
+          <Route
+            path="/login"
+            render={
+              (props) => {
+                return (<Login {...props}
+                  isAuthenticated={this.state.isAuthenticated}
+                  loginHandler={this.setAuthenticated}
+                />)
+              }
+            }
+          />
+          <PrivateRoute
+            isAuthenticated={this.state.isAuthenticated}
+            path="/" exact component={Main}
+            logout={this.setAuthenticated}
+          />
           <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/detail" exact component={DetailItem} />
           <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/checkout" exact component={Checkout} />
         </div>

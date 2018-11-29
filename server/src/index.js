@@ -1,7 +1,8 @@
 const express = require('express');
 let router = express.Router(),
     userrouter = require('./usuarios'),
-    eventrouter = require('./productos');
+    productrouter = require('./productos'),
+    cartrouter = require('./cart');
 
 
 const verifySignin = (req, res, next)=>{
@@ -10,7 +11,8 @@ const verifySignin = (req, res, next)=>{
   }
   return next();
 }
-router.use('/', userrouter);
-router.use('/events', verifySignin ,eventrouter);
+router.use('/usuarios', userrouter);
+router.use('/productos', verifySignin ,productrouter);
+router.use('/cart', verifySignin, cartrouter);
 
 module.exports = router;

@@ -1,8 +1,56 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import './Detail.css';
+
+class DetailItem extends Component{
+  constructor(){
+    super();
+    this.state = {
+      cantidad: 1
+    }
+    this.changeHandler = this.changeHandler.bind(this);
+    this.addClickHanlder = this.addClickHanlder.bind(this);
+  }
+  changeHandler(e){
+    let {name, value} = e.currentTarget;
+    this.setState({...this.state,[name]:value});
+  }
+  addClickHanlder(e){
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.add(this.props._id, this.state.cantidad);
+  }
+  render(){
+
+    return(
+      <div className="card medium">
+        <img className="card-image" src={`http://localhost:3001/${this.props.url}`} />
+        <div className="card-title">{this.props.nombre}</div>
+        <div className="price"><b>Precio:</b>&nbsp;<b>${this.props.precio}</b></div>
+        <div className="price"><b>Unidades Disponibles:</b>&nbsp;<b>{this.props.stock}</b></div>
+        <div className="card-action">
+          <button>Ver Más</button>
+          <form>
+            <button className="add" onClick={this.addClickHanlder}>Agregar</button>
+            <input type="number"
+              name="cantidad"
+              maxLength="3"
+              max={this.props.stock}
+              min="1"
+              value={this.state.cantidad}
+              onChange={this.changeHandler}
+            />
+          </form>
+        </div>
+      </div>
+    )
+  }
+}
 
 export default class Details extends Component {
   render(){
+    let prods = (this.props.prods || []).map((o,i)=>{
+      return (<DetailItem { ...o } key={ o._id } add={this.addToCart}/>);
+    })
     return(
       <section className="card-panel ctdprd">
         <header>
@@ -10,107 +58,20 @@ export default class Details extends Component {
             <h1>Catálogo de Productos</h1>
           </div>
           <div>
-            <app-search></app-search>
+            <div>
+              <form className="searchForm">
+                <label>¿Qúe está buscando?</label><br />
+                <input className="sinput"
+                  type="text"
+                  name="search"
+                  onChange={this.props.searchHandler}
+                  maxLength="30" value={this.props.search}/>
+              </form>
+            </div>
           </div>
         </header>
         <section>
-          <div className="card medium">
-            <img className="card-image" src="http://localhost:3001/imgs/aguacate.jpg" />
-            <div className="card-title">Aguacate</div>
-            <div className="price"><b>Precio:</b>&nbsp;<b>$100.00</b></div>
-            <div className="price"><b>Unidades Disponibles:</b>&nbsp;<b>10</b></div>
-            <div className="card-action">
-              <button>Ver Más</button>
-              <form>
-                <button className="add">Agregar</button>
-                <input type="number" name="cantidad" maxlength="3" max="100" min="1" value="1" />
-              </form>
-            </div>
-          </div>
-
-          <div className="card medium">
-            <img className="card-image" src="http://localhost:3001/imgs/aguacate.jpg" />
-            <div className="card-title">Aguacate</div>
-            <div className="price"><b>Precio:</b>&nbsp;<b>$100.00</b></div>
-            <div className="price"><b>Unidades Disponibles:</b>&nbsp;<b>10</b></div>
-            <div className="card-action">
-              <button>Ver Más</button>
-              <form>
-                <button className="add">Agregar</button>
-                <input type="number" name="cantidad" maxlength="3" max="100" min="1" value="1" />
-              </form>
-            </div>
-          </div>
-
-          <div className="card medium">
-            <img className="card-image" src="http://localhost:3001/imgs/aguacate.jpg" />
-            <div className="card-title">Aguacate</div>
-            <div className="price"><b>Precio:</b>&nbsp;<b>$100.00</b></div>
-            <div className="price"><b>Unidades Disponibles:</b>&nbsp;<b>10</b></div>
-            <div className="card-action">
-              <button>Ver Más</button>
-              <form>
-                <button className="add">Agregar</button>
-                <input type="number" name="cantidad" maxlength="3" max="100" min="1" value="1" />
-              </form>
-            </div>
-          </div>
-
-          <div className="card medium">
-            <img className="card-image" src="http://localhost:3001/imgs/aguacate.jpg" />
-            <div className="card-title">Aguacate</div>
-            <div className="price"><b>Precio:</b>&nbsp;<b>$100.00</b></div>
-            <div className="price"><b>Unidades Disponibles:</b>&nbsp;<b>10</b></div>
-            <div className="card-action">
-              <button>Ver Más</button>
-              <form>
-                <button className="add">Agregar</button>
-                <input type="number" name="cantidad" maxlength="3" max="100" min="1" value="1" />
-              </form>
-            </div>
-          </div>
-
-          <div className="card medium">
-            <img className="card-image" src="http://localhost:3001/imgs/aguacate.jpg" />
-            <div className="card-title">Aguacate</div>
-            <div className="price"><b>Precio:</b>&nbsp;<b>$100.00</b></div>
-            <div className="price"><b>Unidades Disponibles:</b>&nbsp;<b>10</b></div>
-            <div className="card-action">
-              <button>Ver Más</button>
-              <form>
-                <button className="add">Agregar</button>
-                <input type="number" name="cantidad" maxlength="3" max="100" min="1" value="1" />
-              </form>
-            </div>
-          </div>
-
-          <div className="card medium">
-            <img className="card-image" src="http://localhost:3001/imgs/aguacate.jpg" />
-            <div className="card-title">Aguacate</div>
-            <div className="price"><b>Precio:</b>&nbsp;<b>$100.00</b></div>
-            <div className="price"><b>Unidades Disponibles:</b>&nbsp;<b>10</b></div>
-            <div className="card-action">
-              <button>Ver Más</button>
-              <form>
-                <button className="add">Agregar</button>
-                <input type="number" name="cantidad" maxlength="3" max="100" min="1" value="1" />
-              </form>
-            </div>
-          </div>
-
-          <div className="card medium">
-            <img className="card-image" src="http://localhost:3001/imgs/aguacate.jpg" />
-            <div className="card-title">Aguacate</div>
-            <div className="price"><b>Precio:</b>&nbsp;<b>$100.00</b></div>
-            <div className="price"><b>Unidades Disponibles:</b>&nbsp;<b>10</b></div>
-            <div className="card-action">
-              <button>Ver Más</button>
-              <form>
-                <button className="add">Agregar</button>
-                <input type="number" name="cantidad" maxlength="3" max="100" min="1" value="1" />
-              </form>
-            </div>
-          </div>
+          {prods}
         </section>
       </section>
     )

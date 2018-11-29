@@ -12,6 +12,15 @@ router.get('/all', (req, res)=>{
   });
 });// all
 
+router.get('/search/:data', (req, res, next)=>{
+
+  let _data = decodeURI(req.params.data);
+  Producto.find({ nombre: new RegExp("^"+ _data, "i") }, (err, prods)=>{
+    if(err) return res.json([]);
+    res.json(prods);
+  });
+}); //get search
+
 router.post('/new', (req, res)=>{
     let _producto = {... req.body};
     let _productoIns = new Producto(_producto);
@@ -35,6 +44,5 @@ router.post('/delete/:id', (req, res)=>{
     return res.send("Error al eliminar producto, parametros comprometidos");
   }
 }); //
-
 
 module.exports = router;

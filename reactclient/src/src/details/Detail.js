@@ -49,7 +49,7 @@ class DetailItem extends Component{
 export default class Details extends Component {
   render(){
     let prods = (this.props.prods || []).map((o,i)=>{
-      return (<DetailItem { ...o } key={ o._id } add={this.addToCart}/>);
+      return (<DetailItem { ...o } key={ o._id } add={this.props.add}/>);
     })
     return(
       <section className="card-panel ctdprd">

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import PrivateRoute from './src/common/PrivateRoute';
 import Main from './src/main/Main';
 import DetailItem from './src/details/DetailItem';
 import Checkout from './src/checkout/Checkout';
-
+import Cmp404 from './src/Cmp404/Cmp404.js';
 import Login from './src/login/login';
-
 import './App.css';
 
 class App extends Component {
@@ -41,13 +40,20 @@ class App extends Component {
               }
             }
           />
-          <PrivateRoute
-            isAuthenticated={this.state.isAuthenticated}
-            path="/" exact component={Main}
-            logout={this.setAuthenticated}
-          />
-          <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/detail" exact component={DetailItem} />
-          <PrivateRoute isAuthenticated={this.state.isAuthenticated} path="/checkout" exact component={Checkout} />
+          <Switch>
+            <PrivateRoute
+              isAuthenticated={this.state.isAuthenticated}
+              path="/" exact component={Main}
+              logout={this.setAuthenticated}
+            />
+            <PrivateRoute isAuthenticated={this.state.isAuthenticated}
+              path="/detail" exact component={DetailItem}
+            />
+            <PrivateRoute isAuthenticated={this.state.isAuthenticated}
+              path="/checkout" exact component={Checkout}
+            />
+            <Route component={Cmp404} />
+          </Switch>
         </div>
       </Router>
     );

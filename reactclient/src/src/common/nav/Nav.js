@@ -7,7 +7,7 @@ import './Nav.css';
 
 export default class Nav extends Component {
   render(){
-    let cartItems = (<span class="bubble">{this.props.cart.length}</span>);
+    let cartItems = (<span className="bubble">{this.props.cart.length}</span>);
     return (
       <nav>
         <h1>La Bodega</h1>

@@ -7,7 +7,7 @@ router.get('/', (req, res, next) => {
   Carretilla.userCart(req.session.user._id, (err, cart) => {
     if (err)
       return res.send("error");
-    return res.json(cart);
+    return res.json(cart||[]);
   });
 });
 
@@ -61,7 +61,7 @@ router.post('/confirm', (req, res, next) => {
     cart.map((crtItem, i) => {
       Producto.findByIdAndUpdate(
         crtItem.producto,
-        { "$inc": { "stock": (cartItem.cantidad * -1) } },
+        { "$inc": { "stock": (crtItem.cantidad * -1) } },
         (err, rst) => {
           crtItem.remove();
         }

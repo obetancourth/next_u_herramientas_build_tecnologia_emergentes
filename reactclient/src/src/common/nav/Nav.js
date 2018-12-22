@@ -7,6 +7,9 @@ import './Nav.css';
 
 export default class Nav extends Component {
   render(){
+    if (!this.props.isAuthenticated){
+      return null;
+    }
     let cartItems = (<span className="bubble">{this.props.cart.length}</span>);
     return (
       <nav>

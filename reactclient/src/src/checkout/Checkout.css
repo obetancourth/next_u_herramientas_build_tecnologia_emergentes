@@ -36,11 +36,12 @@
     }
     .crtprdimg {
       box-sizing: border-box;
-      width: 30%;
+      width: 35%;
       text-align: center;
     }
     .crtprdimg img {
       max-height: 72px;
+      max-width: 60px;
     }
     .crtprdimg div {
       box-shadow: 0px 0px 3px #ccc;
@@ -49,7 +50,7 @@
     }
     .crtprdsbt {
       box-sizing: border-box;
-      width: 70%;
+      width: 65%;
     }
     .crtprdsbt div:nth-child(1) {
       width: 100%;

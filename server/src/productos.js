@@ -21,6 +21,18 @@ router.get('/search/:data', (req, res, next)=>{
   });
 }); //get search
 
+router.get('/one/:id', (req, res, next) => {
+
+  let _data = decodeURI(req.params.id);
+  console.log(_data)
+  Producto.findById( _data , (err, prod) => {
+    if (err) {
+      return res.json({});
+    }
+    res.json(prod);
+  });
+}); //get search
+
 router.post('/new', (req, res)=>{
     let _producto = {... req.body};
     let _productoIns = new Producto(_producto);

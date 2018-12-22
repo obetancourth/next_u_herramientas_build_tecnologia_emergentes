@@ -7,62 +7,29 @@
     <section class="crtdetprd">
       <div class="crtprds">
 
-        <div class="crtprd">
+        <div class="crtprd" *ngFor="let prod of cartItems">
             <div class="crtprdimg">
               <div>
-                <img src="http://localhost:3001/imgs/aguacate.jpg"/>
+                <img src="http://localhost:3001/{{prod.url}}"/>
               </div>
             </div>
             <div class="crtprdsbt">
               <div>
-                <span>Ajo</span><br/>
-                <span><b>Unidades:</b> 5</span>
+                <span><b>{{prod.nombre}}</b></span><br/>
+                <span><b>Unidades:</b> {{prod.cantidad}}</span>
               </div>
               <div>
-                <b>Subtotal: $5</b>
+                <b>Subtotal:</b> ${{prod.cantidad * prod.precio}}
               </div>
             </div>
         </div>
 
-        <div class="crtprd">
-          <div class="crtprdimg">
-            <div>
-              <img src="http://localhost:3001/imgs/aguacate.jpg" />
-            </div>
-          </div>
-          <div class="crtprdsbt">
-            <div>
-              <span>Ajo</span><br />
-              <span><b>Unidades:</b> 5</span>
-            </div>
-            <div>
-              <b>Subtotal: $5</b>
-            </div>
-          </div>
-        </div>
-
-        <div class="crtprd">
-          <div class="crtprdimg">
-            <div>
-              <img src="http://localhost:3001/imgs/aguacate.jpg" />
-            </div>
-          </div>
-          <div class="crtprdsbt">
-            <div>
-              <span>Ajo</span><br />
-              <span><b>Unidades:</b> 5</span>
-            </div>
-            <div>
-              <b>Subtotal: $5</b>
-            </div>
-          </div>
-        </div>
       </div>
       <div class="crtact">
-        <div>Total: $22</div>
+        <div>Total: ${{totalOrder}}</div>
         <div>
-          <button>Cancelar</button>
-          <button>Pagar</button>
+          <button (click)="cancel()">Cancelar</button>
+          <button (click)="onConfirm()">Pagar</button>
         </div>
       </div>
     </section>

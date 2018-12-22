@@ -4,104 +4,25 @@
     <h1>Catálogo de Productos</h1>
     </div>
     <div>
-    <app-search></app-search>
+    <div class="search">
+      <form class="searchForm">
+        <label>¿Qúe está buscando?</label><br />
+        <input type="text" name="searchtext" [(ngModel)]="search" (keyup)="searchChange(search)" maxlength="30" />
+      </form>
+    </div>
     </div>
   </header>
   <section>
-    <div class="card medium">
-      <img class="card-image" src="http://localhost:3001/imgs/aguacate.jpg" />
-      <div class="card-title">Aguacate</div>
-      <div class="price"><b>Precio:</b>&nbsp;<b>$100.00</b></div>
-      <div class="price"><b>Unidades Disponibles:</b>&nbsp;<b>10</b></div>
+    <div class="card medium" *ngFor="let prod of productos">
+      <img class="card-image" src="http://localhost:3001/{{ prod.url }}" />
+      <div class="card-title">{{ prod.nombre }}</div>
+      <div class="price"><b>Precio:</b>&nbsp;<b>${{ prod.precio }}</b></div>
+      <div class="price"><b>Unidades Disponibles:</b>&nbsp;<b>{{prod.stock}}</b></div>
       <div class="card-action">
-        <button>Ver Más</button>
-        <form>
-          <button class="add">Agregar</button>
-          <input type="number" name="cantidad" maxlength="3" max="100" min="1" value="1"/>
-        </form>
-      </div>
-    </div>
-    
-    <div class="card medium">
-      <img class="card-image" src="http://localhost:3001/imgs/aguacate.jpg" />
-      <div class="card-title">Aguacate</div>
-      <div class="price"><b>Precio:</b>&nbsp;<b>$100.00</b></div>
-      <div class="price"><b>Unidades Disponibles:</b>&nbsp;<b>10</b></div>
-      <div class="card-action">
-        <button>Ver Más</button>
-        <form>
-          <button class="add">Agregar</button>
-          <input type="number" name="cantidad" maxlength="3" max="100" min="1" value="1" />
-        </form>
-      </div>
-    </div>
-
-    <div class="card medium">
-      <img class="card-image" src="http://localhost:3001/imgs/aguacate.jpg" />
-      <div class="card-title">Aguacate</div>
-      <div class="price"><b>Precio:</b>&nbsp;<b>$100.00</b></div>
-      <div class="price"><b>Unidades Disponibles:</b>&nbsp;<b>10</b></div>
-      <div class="card-action">
-        <button>Ver Más</button>
-        <form>
-          <button class="add">Agregar</button>
-          <input type="number" name="cantidad" maxlength="3" max="100" min="1" value="1" />
-        </form>
-      </div>
-    </div>
-
-    <div class="card medium">
-      <img class="card-image" src="http://localhost:3001/imgs/aguacate.jpg" />
-      <div class="card-title">Aguacate</div>
-      <div class="price"><b>Precio:</b>&nbsp;<b>$100.00</b></div>
-      <div class="price"><b>Unidades Disponibles:</b>&nbsp;<b>10</b></div>
-      <div class="card-action">
-        <button>Ver Más</button>
-        <form>
-          <button class="add">Agregar</button>
-          <input type="number" name="cantidad" maxlength="3" max="100" min="1" value="1" />
-        </form>
-      </div>
-    </div>
-
-    <div class="card medium">
-      <img class="card-image" src="http://localhost:3001/imgs/aguacate.jpg" />
-      <div class="card-title">Aguacate</div>
-      <div class="price"><b>Precio:</b>&nbsp;<b>$100.00</b></div>
-      <div class="price"><b>Unidades Disponibles:</b>&nbsp;<b>10</b></div>
-      <div class="card-action">
-        <button>Ver Más</button>
-        <form>
-          <button class="add">Agregar</button>
-          <input type="number" name="cantidad" maxlength="3" max="100" min="1" value="1" />
-        </form>
-      </div>
-    </div>
-
-    <div class="card medium">
-      <img class="card-image" src="http://localhost:3001/imgs/aguacate.jpg" />
-      <div class="card-title">Aguacate</div>
-      <div class="price"><b>Precio:</b>&nbsp;<b>$100.00</b></div>
-      <div class="price"><b>Unidades Disponibles:</b>&nbsp;<b>10</b></div>
-      <div class="card-action">
-        <button>Ver Más</button>
-        <form>
-          <button class="add">Agregar</button>
-          <input type="number" name="cantidad" maxlength="3" max="100" min="1" value="1" />
-        </form>
-      </div>
-    </div>
-
-    <div class="card medium">
-      <img class="card-image" src="http://localhost:3001/imgs/aguacate.jpg" />
-      <div class="card-title">Aguacate</div>
-      <div class="price"><b>Precio:</b>&nbsp;<b>$100.00</b></div>
-      <div class="price"><b>Unidades Disponibles:</b>&nbsp;<b>10</b></div>
-      <div class="card-action">
-        <button>Ver Más</button>
-        <form>
-          <button class="add">Agregar</button>
-          <input type="number" name="cantidad" maxlength="3" max="100" min="1" value="1" />
+        <button (click)="showDetail(prod)">Ver Más</button>
+        <form rol="form" (submit)="addCart($event, prod, name.value)">
+          <button class="add" type="submit">Agregar</button>
+          <input type="number" #name maxlength="3" max="100" min="1" value="1"/>
         </form>
       </div>
     </div>

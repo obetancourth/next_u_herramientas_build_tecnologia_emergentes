@@ -3,14 +3,14 @@
    <h3 style="text-align: center">Inicia Sesión</h3>
    <fieldset>
      <label>Correo Electrónico</label>
-     <input type="text" name="username" placeholder="correo@electronico"/>
+     <input type="email" name="username" [(ngModel)]="username" placeholder="correo@electronico"/>
    </fieldset>
     <fieldset>
       <label>Contraseña</label>
-      <input type="email" name="email" placeholder="contraseña" />
+      <input type="password" name="password" [(ngModel)]="password" placeholder="contraseña" />
     </fieldset>
     <fieldset class="center">
-      <button>Ingresar</button>
+      <button (click)="signon(username, password)">Ingresar</button>
     </fieldset>
  </form>
 </section>

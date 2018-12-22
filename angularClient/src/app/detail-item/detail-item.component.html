@@ -2,19 +2,19 @@
   <app-nav></app-nav>
   <section class="card-panel prddet">
     <header>
-      <h1>Aguacate</h1>
+      <h1>{{prod.nombre}}</h1>
     </header>
     <section class="detcnt">
       <div class="prddetimg">
-        <img src="http://localhost:3001/imgs/aguacate.jpg" />
+        <img src="http://localhost:3001/{{prod.url}}" />
       </div>
       <div class="prtdetdet">
         <div>
-          <h2>Precio: </h2>
-          <h2>Unicades Disponibles: </h2>
+          <h2><b>Precio:</b> {{prod.precio}}</h2>
+          <h2><b>Unidades Disponibles:</b> {{prod.stock}} </h2>
         </div>
         <div>
-          <button>Atras</button>
+          <button (click)="cancel()">Atras</button>
         </div>
       </div>
     </section>

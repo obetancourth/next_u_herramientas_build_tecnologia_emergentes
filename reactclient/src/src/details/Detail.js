@@ -35,7 +35,7 @@ class DetailItem extends Component{
     }
     return(
       <div className="card medium">
-        <img className="card-image" src={`http://localhost:3001/${this.props.url}`} />
+        <img className="card-image" src={`http://localhost:3001/${this.props.url}`} alt={`Imágen de ${this.props.nombre}`}/>
         <div className="card-title">{this.props.nombre}</div>
         <div className="price"><b>Precio:</b>&nbsp;<b>${this.props.precio}</b></div>
         <div className="price"><b>Unidades Disponibles:</b>&nbsp;<b>{this.props.stock}</b></div>

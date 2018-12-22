@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import * as request from 'superagent';
 
 import PrivateRoute from './src/common/PrivateRoute';
@@ -107,8 +107,6 @@ class App extends Component {
       })
   }
   render() {
-    let rd = (this.state.redirecTo && true)? (
-      <Redirect to={this.state.redirect} />) : null;
     return (
       <Router>
         <section className="container">

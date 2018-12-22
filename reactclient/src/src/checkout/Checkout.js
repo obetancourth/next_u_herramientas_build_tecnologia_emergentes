@@ -8,7 +8,7 @@ class CheckoutDetail extends Component{
       <div className="crtprd">
         <div className="crtprdimg">
           <div>
-            <img src={`http://localhost:3001/${this.props.url}`} />
+            <img src={`http://localhost:3001/${this.props.url}`} alt={`Imágen de ${this.props.nombre}`}/>
           </div>
         </div>
         <div className="crtprdsbt">

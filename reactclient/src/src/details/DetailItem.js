@@ -23,7 +23,7 @@ export default class DetailItem extends Component{
           </header>
           <section className="detcnt">
             <div className="prddetimg">
-            <img src={`http://localhost:3001/${this.props.url}`} />
+            <img src={`http://localhost:3001/${this.props.url}`} alt={`Imágen de ${this.props.nombre}`}/>
             </div>
             <div className="prtdetdet">
               <div>

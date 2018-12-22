@@ -5,9 +5,6 @@ import Details from '../details/Detail';
 import './Main.css';
 
 export default class Main extends Component{
-  constructor(){
-    super();
-  }
   render(){
     return (
       <section className="container">

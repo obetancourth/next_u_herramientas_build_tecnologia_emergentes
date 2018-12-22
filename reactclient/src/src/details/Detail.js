@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
 import './Detail.css';
 
 class DetailItem extends Component{
   constructor(){
     super();
     this.state = {
-      cantidad: 1
+      cantidad: 1,
+      redirect:''
     }
     this.changeHandler = this.changeHandler.bind(this);
     this.addClickHanlder = this.addClickHanlder.bind(this);
+    this.viewHandler = this.viewHandler.bind(this);
   }
   changeHandler(e){
     let {name, value} = e.currentTarget;
@@ -19,8 +22,17 @@ class DetailItem extends Component{
     e.stopPropagation();
     this.props.add(this.props._id, this.state.cantidad);
   }
+  viewHandler(e){
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.viewHandler(this.props._id, ()=>{
+      this.setState({"redirect":'/detail'})
+    });
+  }
   render(){
-
+    if(this.state.redirect!==''){
+      return (<Redirect to='/detail' />);
+    }
     return(
       <div className="card medium">
         <img className="card-image" src={`http://localhost:3001/${this.props.url}`} />
@@ -28,7 +40,7 @@ class DetailItem extends Component{
         <div className="price"><b>Precio:</b>&nbsp;<b>${this.props.precio}</b></div>
         <div className="price"><b>Unidades Disponibles:</b>&nbsp;<b>{this.props.stock}</b></div>
         <div className="card-action">
-          <button>Ver Más</button>
+          <button onClick={this.viewHandler}>Ver Más</button>
           <form>
             <button className="add" onClick={this.addClickHanlder}>Agregar</button>
             <input type="number"
@@ -49,7 +61,12 @@ class DetailItem extends Component{
 export default class Details extends Component {
   render(){
     let prods = (this.props.prods || []).map((o,i)=>{
-      return (<DetailItem { ...o } key={ o._id } add={this.props.add}/>);
+      return (<DetailItem { ...o }
+                  key={ o._id }
+                  add={this.props.add}
+                  viewHandler={this.props.viewHandler}
+              />
+      );
     })
     return(
       <section className="card-panel ctdprd">
